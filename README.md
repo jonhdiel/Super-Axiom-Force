@@ -1,13 +1,29 @@
-# Super Axiom Force for Crimson Desert 1.0.0.1855
+# Super Axiom Force — Crimson Desert 2.05.00
 
-GitHub-ready source and release package for the Super Axiom Force update that restores INI-controlled behavior after the game update.
+The Nexus build of [Super Axiom Force](https://www.nexusmods.com/crimsondesert/mods/2852), patched to run on Crimson Desert **2.05.00** (exe `1.0.0.3663`).
 
-## Included
+The mod extends Axiom Force range and pull speed, and adds StraightPull and InstantAxiom.
 
-- `source/SuperAxiomForce/` - source snapshot used for this build.
-- `BUILD_NOTES.md` - build notes and root-cause summary.
-- `CHANGELOG.md` - Nexus/GitHub-facing changelog.
+## Install
 
-## Deployment Note
+1. Put [release/SuperAxiomForce.asi](release/SuperAxiomForce.asi) and [release/SuperAxiomForce.ini](release/SuperAxiomForce.ini) into DMM (Definitive Mod Manager) and deploy.
+2. Check that both files are in `Crimson Desert\bin64`. If the `.ini` is missing, the mod uses its built-in defaults (500 / 1000 / on / on), and the log shows `exists=false`.
+3. Start the game, load a save and wait about 20 seconds. `bin64\SuperAxiomForce.log` should end with `Apply summary: Enabled=true result=complete`.
 
-For Crimson Desert, deploy the ASI through Definitive Mod Manager. The INI may be mirrored to `bin64` when updating active settings.
+## Game updated and the mod stopped working?
+
+That's expected: this build only runs on one exact game version. On any other version it does nothing and writes **no log at all**. Follow [docs/UPDATING.md](docs/UPDATING.md). The process is mostly automated.
+
+## Layout
+
+| Path | What it is |
+|---|---|
+| `release/` | The current working `.asi` and `.ini` |
+| `tools/dump_game.py` | Captures the running game's decrypted code to a file |
+| `tools/update_saf.py` | Re-targets the `.asi` to a new game build using that file |
+| `tools/state/` | What each patched build expects, one file per game version |
+| `docs/UPDATING.md` | Step-by-step update guide and technical notes |
+| `archive/nexus-2.04.08/` | The original, unmodified Nexus `.asi` (game 2.04.08) |
+| `archive/legacy-source-1.0.0.1855/` | Old open-source version for game 1.0.0.1855. Reference only; the Nexus build is a different, newer program |
+
+See [CHANGELOG.md](CHANGELOG.md) for history.

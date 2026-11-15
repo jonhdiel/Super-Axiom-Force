@@ -1,0 +1,30 @@
+{
+  "game_version": "2.04.08",
+  "game_exe_version": "1.0.0.3576",
+  "build_tag": "1.0.0.3576-native-r22-owned-contract",
+  "gate": {
+    "timestamp": "0x6aed2e85",
+    "size_of_image": "0x13cc4000",
+    "checksum": "0x137c1424"
+  },
+  "block": {
+    "anchors": [
+      {"name": "instant-axiom vmulss", "rva": "0x137cdf5", "asi_rva": "0x3dfe8", "len": 15},
+      {"name": "axiom helper prologue", "rva": "0x137ba70", "asi_rva": "0x3dff8", "len": 29},
+      {"name": "maneuver loop A", "rva": "0x137eadc", "asi_rva": "0x3e018", "len": 34},
+      {"name": "maneuver loop B", "rva": "0x137ebbc", "asi_rva": "0x3e040", "len": 34}
+    ],
+    "call_target": "0x137ba70",
+    "call_sites": ["0x137ebe3", "0x13801f3"],
+    "call_site_bytes": {"rva": "0x137ce04", "qword_asi_rva": "0x3e068", "word_asi_rva": "0x3e070"},
+    "constants": {
+      "0x137ba70": 9, "0x137cdf5": 8, "0x137ce04": 10, "0x137ce0c": 1,
+      "0x137e32c": 1, "0x137e37c": 5, "0x137e40c": 1, "0x137e45c": 5,
+      "0x137eadc": 1, "0x137eb03": 3, "0x137ebbc": 1, "0x137ebe3": 3,
+      "0x137fa43": 1, "0x137fa8e": 5, "0x13801f3": 2
+    }
+  },
+  "table": {"asi_rva": "0x3e080", "count": 11},
+  "data": {"range": "0x70e73e8"},
+  "relaxed_contract": {"asi_rva": "0xd4d4"}
+}

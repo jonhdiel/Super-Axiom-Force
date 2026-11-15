@@ -1,0 +1,4 @@
+# memory dumps of the game (hundreds of MB)
+*.bin
+__pycache__/
+*.log
