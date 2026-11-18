@@ -8,7 +8,6 @@ Follow this guide when Crimson Desert updates and the mod stops working.
 
 ---
 (THE AUTOMATED METHOD IS BELOW FOR THE AI TO DO EVERYTHING BELOW HERE)
-MANUAL PATCH 
 ## Quick MANUAL procedure (about 10 minutes)
 
 ### 1. One-time setup
