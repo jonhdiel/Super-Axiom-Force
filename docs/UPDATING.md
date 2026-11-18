@@ -7,8 +7,9 @@ Follow this guide when Crimson Desert updates and the mod stops working.
 **Why it needs updating:** the mod uses fixed locations in the game's code. A game update moves that code around, so the locations have to be found again and written into the `.asi`. Nothing is recompiled. The scripts in `tools/` do the finding and patching.
 
 ---
-
-## Quick procedure (about 10 minutes)
+(THE AUTOMATED METHOD IS BELOW FOR THE AI TO DO EVERYTHING BELOW HERE)
+MANUAL PATCH 
+## Quick MANUAL procedure (about 10 minutes)
 
 ### 1. One-time setup
 
@@ -73,9 +74,10 @@ Each message points to a specific part of the mod that changed in the update.
 
 The easiest case is a small update (a hotfix) that only moves code around. The script handles that fully. If the update rewrote the Axiom code itself, the Nexus author's own update may be the better route. Check the Nexus page first.
 
-### Manual work
+### AUTOMATED PATCH
 
-Open a Claude Code session in this repo, attach this guide, and paste the failing output. All the information needed is in "How it works" below, and the dump file contains everything to search. The 2.05.00 update was done that way from scratch. `update_saf.py` is that work automated.
+Open a Claude Code session in this repo, attach this guide, and ask it to update the mod to the current game version. You can ask it to do all the work before, like running the dumper, getting the version, etc.., ive done it sucessufully with Claude Opus 5.5 at Medium Effort Level. 
+All the information needed for manual or automated patch is in "How it works" below, and the dump file contains everything to search. The 2.05.00 update was done that way from scratch. `update_saf.py` is that work automated.
 
 ---
 
