@@ -1,6 +1,8 @@
-# Super Axiom Force — Crimson Desert 2.05.00
+# Super Axiom Force — Crimson Desert 2.05.01
 
-The Nexus build of [Super Axiom Force](https://www.nexusmods.com/crimsondesert/mods/2852), patched to run on Crimson Desert **2.05.00** (exe `1.0.0.3663`).
+The Nexus build of [Super Axiom Force](https://www.nexusmods.com/crimsondesert/mods/2852), patched to run on Crimson Desert **2.05.01** (exe `1.0.0.3732`).
+
+Builds for older game versions are on the [Releases](../../releases) page.
 
 The mod extends Axiom Force range and pull speed, and adds StraightPull and InstantAxiom.
 
@@ -18,7 +20,7 @@ That's expected: this build only runs on one exact game version. On any other ve
 
 | Path | What it is |
 |---|---|
-| `release/` | The current working `.asi` and `.ini` |
+| `release/` | The current working `.asi` and `.ini`, plus the same two files packed as a `.rar` |
 | `tools/dump_game.py` | Captures the running game's decrypted code to a file |
 | `tools/update_saf.py` | Re-targets the `.asi` to a new game build using that file |
 | `tools/state/` | What each patched build expects, one file per game version |
