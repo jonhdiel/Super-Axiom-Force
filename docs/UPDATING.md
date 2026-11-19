@@ -32,10 +32,10 @@ py -m pip install --user -r tools/requirements.txt
 
 ### 3. Run the updater
 
-From `tools/`, using the newest file in `tools/state/` as the starting point:
+From `tools/`, using the **newest** file in `tools/state/` as the starting point. It must match the `.asi` in `release/`. Currently that's `2.05.01.json`.
 
 ```
-py update_saf.py --asi ..\release\SuperAxiomForce.asi --state state\2.05.00.json ^
+py update_saf.py --asi ..\release\SuperAxiomForce.asi --state state\2.05.01.json ^
     --dump C:\temp\game_NEW.bin --version 1.0.0.XXXX --game-version 2.0X.XX ^
     --out ..\release\SuperAxiomForce.new.asi --state-out state\2.0X.XX.json
 ```
@@ -53,7 +53,12 @@ The script prints each value it moves (old → new). It stops without writing an
    - start with `Starting up build=1.0.0.XXXX-native-r22-owned-contract`
    - contain `Discovery summary: Range=scoped-ready Limit=scoped-ready PullSpeed=scoped-ready StraightPull=scoped-ready InstantAxiom=ready`
    - end with `Apply summary: Enabled=true result=complete`
-4. Try it in-game, then add an entry to `CHANGELOG.md` and commit the new `.asi` and state file.
+4. Try it in-game. Then:
+   - add an entry to `CHANGELOG.md` and a row to "Update history" below
+   - rebuild the `.rar` in `release/`, replacing the old one
+   - update the version in `README.md`
+   - commit the new `.asi`, `.rar` and state file
+   - create a GitHub release tagged `v<game version>` with the `.rar` attached. With GitHub CLI installed and signed in, that's `gh release create v2.0X.XX release/<file>.rar --title "..." --notes "..."`.
 
 ---
 
@@ -80,6 +85,17 @@ All the information needed for manual or automated patch is in "How it works" be
 
 ---
 
+## Update history
+
+How far things moved in each update. A normal-looking new update should land in the same range. A very different shift doesn't mean something is wrong, but it's worth a closer look at the log.
+
+| Update | Exe | Axiom block shift | Range/InstantAxiom sites shift | Range data | Result |
+|---|---|---|---|---|---|
+| 2.04.08 → 2.05.00 | 1.0.0.3663 | `+0x3E690` | ≈ `+0x2BA30` | `0x716B7E8` | Done by hand, then automated |
+| 2.05.00 → 2.05.01 | 1.0.0.3732 | `+0x1B80` | ≈ `+0x370` | `0x7171898` | `update_saf.py` ran without stopping, no manual work |
+
+---
+
 ## How it works (technical reference)
 
 All addresses below are RVAs, i.e. offsets from the game's image base `0x140000000`. "asi RVA" means a location inside `SuperAxiomForce.asi`.
@@ -94,7 +110,7 @@ All addresses below are RVAs, i.e. offsets from the game's image base `0x1400000
 
 **1. Axiom code block**
 
-About 18 KB of game code, moved as one piece (2.04.08 → 2.05.00: `+0x3E690`). The mod uses it in three ways:
+About 18 KB of game code, moved as one piece in every update so far (see "Update history"). The mod uses it in three ways:
 - as code immediates, some stored negated (`state.block.constants`, with how many times each appears in the `.asi`)
 - through four byte copies stored in the `.asi`'s `.rdata`, which the mod compares against the game (`state.block.anchors`)
 - through a 10-byte copy, `lea rcx,[rsp+40h]` followed by a CALL, at `call_site_bytes`. The CALL's displacement changes when its target moves, so the updater copies the new bytes from the dump.
